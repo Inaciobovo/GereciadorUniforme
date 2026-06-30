@@ -4,6 +4,7 @@ package service;
 import java.util.Scanner;
 import model.Uniforme;
 import java.util.ArrayList;
+import service.MenuService;
 
 public class UniformeService {
     Scanner sc = new Scanner(System.in);
@@ -36,7 +37,8 @@ public class UniformeService {
             
                 if(tamanho.isBlank()){
                     System.out.println("O Tamanho nao pode estar vazio");
-                }else if (tamanho.matches("PP | P | M | G | GG | XG")){
+                }else if (tamanho.matches("PP|P|M|G|GG|XG")){
+                    tamanho.toUpperCase();
                     break;
                 }else{
                   System.out.println("Tamanho invalido! Por Favor, digite apenas PP, P, M, G, GG, XG");
@@ -76,7 +78,7 @@ public class UniformeService {
         }
     }
 
-    public void consltarUniforme(){
+    public void consultarUniforme(){
         System.out.println("=== Buscar Uniforme ===");
         System.out.println("Digite o codigo do Uniforme: ");
         int id = sc.nextInt();
@@ -88,4 +90,38 @@ public class UniformeService {
                 }
             }
     }
+
+    public void menuUniforme(){
+
+        while ( true)  {
+            System.out.println("""
+                1 - Cadastrar Uniforme
+                2 - Buscar Uniforme
+                3 - Listar Uniformes
+                0 - Voltar ao Menu
+                """);
+                int opcao = sc.nextInt();
+                sc.nextLine();
+
+                switch (opcao) {
+                    case 1:
+                        cadastrarUniforme();
+                        break;
+                
+                    case 2:
+                        consultarUniforme();
+                        break;
+                    case 3: 
+                        listarUniformes();
+                    
+                    case 0:
+                        MenuService menuService = new MenuService();
+                        menuService.menuPrincipal();
+
+                        break;
+                }
+        }
+        
+    }
+
 }

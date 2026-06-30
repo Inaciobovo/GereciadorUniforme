@@ -67,8 +67,8 @@ public class Uniforme {
 
     @Override
     public String toString(){
-        return "Modelo: " + descricao + "/n"+
-                " | Tamanho: " + tamanho + "/n"+
+        return "Modelo: " + descricao +
+                " | Tamanho: " + tamanho +
                 " | Quantidade: " + quantidade +
                 " | Valor Atual: " + quantidade * valor;
     }
