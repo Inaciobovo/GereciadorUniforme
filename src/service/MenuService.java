@@ -13,13 +13,18 @@ public class MenuService {
             """);
             int opcao = sc.nextInt();
                 switch (opcao) {
-                case 1:
-                    UniformeService novoService = new UniformeService();
-                    novoService.menuUniforme();
-                    break;
-            
-                default:
-                    break;
+                    case 1:
+                        UniformeService novoService = new UniformeService();
+                        novoService.menuUniforme();
+                        break;
+                    case 2:
+                        System.out.println("EM DESENVOLVIMENTO");
+                        break;
+                    case 3:
+                        System.out.println("EM DESENVOLVIMENTO");
+                        break;
+                    case 0:
+                        return;
                 }
         }
         
