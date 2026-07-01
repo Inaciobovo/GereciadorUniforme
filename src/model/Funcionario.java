@@ -5,7 +5,7 @@ public class Funcionario {
 
     private int idFuncionario;
     private String nome;
-    private int cpf;
+    private String cpf;
     private String setor;
 
     public Funcionario(){
@@ -15,7 +15,9 @@ public class Funcionario {
     //GETTERS
     public int getIDFuncionario() {return this.idFuncionario;}
     public String getNomeFuncionario(String nome){return this.nome;}
-    public int getcpfFuncionario(){return this.cpf;}
+    public String getCpfFuncionario(){
+        return this.cpf;
+    }
     public String getSetorFuncionario(String setor){return this.setor;}
 
     //SETTERS
@@ -26,7 +28,7 @@ public class Funcionario {
         this.nome = this.nome;
     }
     public void setCpfFuncionario(String cpf){
-        if(this.cpf <0){
+        if(cpf.trim().isEmpty()){
             System.out.println("O cpf nao pode ser negativo e nao pode conter espacos");
         }
         this.cpf = this.cpf;

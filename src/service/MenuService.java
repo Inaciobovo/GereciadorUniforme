@@ -18,7 +18,8 @@ public class MenuService {
                         novoService.menuUniforme();
                         break;
                     case 2:
-                        System.out.println("EM DESENVOLVIMENTO");
+                        FuncionarioService  novoService2 = new FuncionarioService();
+                        novoService2.menuFuncionario();
                         break;
                     case 3:
                         System.out.println("EM DESENVOLVIMENTO");
