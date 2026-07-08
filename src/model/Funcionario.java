@@ -13,31 +13,28 @@ public class Funcionario {
     }
 
     //GETTERS
-    public int getIDFuncionario() {return this.idFuncionario;}
-    public String getNomeFuncionario(String nome){return this.nome;}
-    public String getCpfFuncionario(){
-        return this.cpf;
-    }
-    public String getSetorFuncionario(String setor){return this.setor;}
+    public int getIDFuncionario() {return idFuncionario;}
+    public String getNomeFuncionario(String nome){return nome;}
+    public String getCpfFuncionario(){return cpf;}
+    public String getSetorFuncionario(String setor){return setor;}
 
     //SETTERS
-    public void setNomeFuncionario(){
-        if(nome == null || nome.trim().isEmpty()){
-            System.out.println("O nome nao pode conter espacoes e nao pode ser vazio");
-        }
-        this.nome = this.nome;
+    public void setNomeFuncionario(String nome){
+        this.nome = nome;
     }
     public void setCpfFuncionario(String cpf){
         if(cpf.trim().isEmpty()){
             System.out.println("O cpf nao pode ser negativo e nao pode conter espacos");
+        }else {
+        	this.cpf = cpf;
         }
-        this.cpf = this.cpf;
+
     }
     public void setSetorFuncionario(String setor){
         if(setor == null || setor.trim().isEmpty()){
             System.out.println("O setor nao pode conter espacos e nao pode ser vazio!");
         }
-        this.setor = this.setor;
+        this.setor = setor;
     }
 
     @Override

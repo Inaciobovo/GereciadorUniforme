@@ -1,8 +1,3 @@
-import java.util.Scanner;
-
-import model.Uniforme;
-import service.UniformeService;
-import service.UniformeService.*;
 import service.MenuService;
 
 public class Main {

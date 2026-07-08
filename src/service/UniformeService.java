@@ -1,10 +1,9 @@
 package service;
-
-//import dos ultilitario (Scanner, ArrayList)
 import java.util.Scanner;
 import model.Uniforme;
 import java.util.ArrayList;
-import service.MenuService;
+import java.math.BigDecimal;
+
 
 public class UniformeService {
     Scanner sc = new Scanner(System.in);
@@ -16,14 +15,15 @@ public class UniformeService {
         String descricao;
         String tamanho;
         int quantidade;
-        Double valor;
+        BigDecimal valor;
 
         //DESCRICAO
         while(true){
-            
-            System.out.println("=== CADASTRAR UNIFORME ===");
+        	System.out.println("");
+        	System.out.println("============================================================================");
+            System.out.println("----- CADASTRAR UNIFORME -----");
 
-            System.out.println("Descricao do uniforme: ");
+            System.out.print("Descricao do uniforme: ");
             descricao = sc.nextLine();
                 if(!descricao.isBlank()){
                     break;
@@ -34,23 +34,23 @@ public class UniformeService {
                 
         //TAMANHO
         while(true){ 
-            System.out.println("Tamanho do uniforme somente essas opcoes: (PP, P, M, G, GG, XG): ");
+            System.out.print("Tamanho do uniforme somente essas opcoes: (PP, P, M, G, GG, XG): ");
             tamanho = sc.nextLine();
             tamanho = tamanho.toUpperCase();
             
                 if(tamanho.isBlank()){
-                    System.out.println("O Tamanho nao pode estar vazio");
+                    System.out.print("O Tamanho nao pode estar vazio");
                 }else if (tamanho.matches("PP|P|M|G|GG|XG")){
                     break;
                 }else{
-                  System.out.println("Tamanho invalido! Por Favor, digite apenas PP, P, M, G, GG, XG");
+                  System.out.print("Tamanho invalido! Por Favor, digite apenas PP, P, M, G, GG, XG");
                 }
         }    
         uniformeNovo.setTamanho(tamanho);
 
         //QUANTIDADE
         while (true) {
-            System.out.println("Quantidade do uniforme: ");
+            System.out.print("Quantidade do uniforme: ");
             try{
                 quantidade = Integer.parseInt(sc.nextLine());
 
@@ -58,7 +58,7 @@ public class UniformeService {
                     break;
                 }
 
-                System.out.println("A quantidade mínima é 3.");
+                System.out.print("A quantidade mínima é 3.");
         }catch(NumberFormatException e){
                     System.out.println("Digite apenas numeros!");
                 }
@@ -67,20 +67,23 @@ public class UniformeService {
 
         // VALOR
          while (true) {
-            System.out.println("Valor do uniforme: ");
+            System.out.print("Valor do uniforme: ");
 
 
             try{
-                valor = Double.parseDouble(sc.nextLine());
-
-                if(valor > 0){
+                valor = new BigDecimal(sc.nextLine().replace(",", "."));
+                
+                if(valor.compareTo(BigDecimal.ZERO)> 0){
                     break;
                 }
-                System.out.println("O Valor deve ser maior que zero");
+                System.out.print("O Valor deve ser maior que zero");
             } catch(NumberFormatException e) {
-                System.out.println("Digite um valor valido!");
+                System.out.print("Digite um valor valido!");
+                
             }
         }
+        System.out.println("============================================================================"); 
+        System.out.print("");
         uniformeNovo.setValor(valor);
 
         estoqueUniforme.add(uniformeNovo);
@@ -88,7 +91,10 @@ public class UniformeService {
 
     public void listarUniformes(){
         for(Uniforme uniforme : estoqueUniforme){
-            System.out.println(uniforme);
+        	System.out.println("====================================================================================");
+        	System.out.println(uniforme);
+        	System.out.println("====================================================================================");
+        	System.out.print("");
         }
     }
 
@@ -100,7 +106,10 @@ public class UniformeService {
             
             for(Uniforme uniforme :estoqueUniforme){
                 if(uniforme.getId() == id ){
+                	System.out.println("============================================================================");
                     System.out.println(uniforme);
+                    System.out.println("============================================================================");
+                    System.out.print("");
                 }
             }
     }
@@ -120,7 +129,6 @@ public class UniformeService {
     }
 
     public void menuUniforme(){
-        MenuService menu = new MenuService();
 
         while ( true)  {
             System.out.println("""
@@ -129,28 +137,27 @@ public class UniformeService {
                 3 - Listar Uniformes
                 0 - Voltar ao Menu
                 """);
+            	
+            	System.out.print("Opcao: ");
                 int opcao = sc.nextInt();
+               
                 sc.nextLine();
 
                 switch (opcao) {
                     case 1:
                         cadastrarUniforme();
-
-                        menu.menuPrincipal();
+                        break;
 
                     case 2:
                         consultarUniforme();
-
-                        menu.menuPrincipal();
+                        break;
+                        
                     case 3: 
                         listarUniformes();
-
-                        menu.menuPrincipal();
-
-                    
+                        break;
+                        
                     case 0:
-                        menu.menuPrincipal();
-                        return;
+                    	return;                         
                 }
         }
         

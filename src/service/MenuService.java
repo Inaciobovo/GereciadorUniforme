@@ -3,30 +3,40 @@ import java.util.Scanner;
 
 public class MenuService {
     Scanner sc = new Scanner(System.in);
-    public void menuPrincipal(){
-            System.out.println("=== GERENCIADOR DE UNIFORME ===");
-            System.out.print("""
-            1 - Uniforme
-            2 - Funcionarios
-            3 - Estoque
-            0 - Sair
-            """);
+    private UniformeService uniformeService = new UniformeService();
+    private FuncionarioService funcionarioService = new FuncionarioService();
+    
+    
+    public void menuPrincipal(){        
+    	
+    	while(true) {
+    		  
+    		System.out.println("""
+                      === GERENCIADOR ===
+                      1 - Uniformes
+                      2 - Funcionários
+                      0 - Sair
+                      """);
+    		System.out.print("opcao: ");
+    		System.out.print("");
+    		
             int opcao = sc.nextInt();
-                switch (opcao) {
-                    case 1:
-                        UniformeService novoService = new UniformeService();
-                        novoService.menuUniforme();
-                        break;
-                    case 2:
-                        FuncionarioService  novoService2 = new FuncionarioService();
-                        novoService2.menuFuncionario();
-                        break;
-                    case 3:
-                        System.out.println("EM DESENVOLVIMENTO");
-                        break;
-                    case 0:
+            
+            switch (opcao) {
+                    
+            	case 1:
+            		System.out.println("============================================================================");
+            		uniformeService.menuUniforme();
+            		break;
+                
+            	case 2:
+            		funcionarioService.menuFuncionario();
+            		break;
+            
+            	case 0:
                         return;
                 }
         }
         
+    }
 }

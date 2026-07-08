@@ -1,5 +1,5 @@
 package model;
-
+import java.math.BigDecimal;
 public class Uniforme {
     private static int contadorId = 0;
     
@@ -7,7 +7,7 @@ public class Uniforme {
     private String descricao;
     private String tamanho;
     private int quantidade;
-    private double valor;
+    private BigDecimal valor;
 
     // Metodo construtor para o ID autoincrementado
     public Uniforme(){
@@ -31,7 +31,7 @@ public class Uniforme {
         return quantidade;
     }
 
-    public double getValor(){
+    public BigDecimal getValor(){
         return valor;
     }
 
@@ -58,8 +58,8 @@ public class Uniforme {
         this.quantidade = quantidade;
     }
 
-    public void setValor(double valor){
-        if(valor < 0){
+    public void setValor(BigDecimal valor){
+        if(valor.compareTo(BigDecimal.ZERO) < 0){
             System.out.println("O valor do uniforme nao pode negativo");
         }
         this.valor = valor;
@@ -67,9 +67,10 @@ public class Uniforme {
 
     @Override
     public String toString(){
-        return "Modelo: " + descricao +
+        return "Id: " + id+
+        		" | Descricao: " + descricao +
                 " | Tamanho: " + tamanho +
                 " | Quantidade: " + quantidade +
-                " | Valor Atual: " + quantidade * valor;
+                " | Valor Atual: " + valor.multiply(BigDecimal.valueOf(quantidade));
     }
 }
